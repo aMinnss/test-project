@@ -1,0 +1,53 @@
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav li:first-child {
+    border: 1px solid white;
+}
+
+nav li:last-child {
+    border: 3px solid green;
+}
+
+nav li:nth-child(2) {
+    background-color: red;
+}
+
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* nav a:visited {
+    color: green;
+} */
+
+nav a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+nav a:active {
+    color: yellow;
+}
+
+nav input:focus {
+    box-shadow: 0 0 2px 2px #ccc;
+    background-color: black;
+    color: white;
+}
