@@ -129,31 +129,60 @@ fetch('https://jsonplaceholder.typicode.com/users', {
 
  // --------------------------------------------------------------------------------------
 
+const requestURL = 'https://jsonplaceholder.typicode.com/users'
 
-
-function sendRequest () {
-
-const xhr = new XMLHttpRequest()
+function sendRequest (method, url) {
+    return new Promise((resolve, reject) => {
+       const xhr = new XMLHttpRequest()
     
-xhr.open('GET', 'https://jsonplaceholder.typicode.com/users')
+xhr.open(method, url)
 
 xhr.responseType = 'json'
 
 xhr.onload = () => {
     if (xhr.status >= 400) {
-        console.error(xhr.response)
+        reject(xhr.response)
     } else {
-    console.log( xhr.response)
+    resolve( xhr.response)
     }
 }
 
 xhr.onerror = () => {
-    console.log(xhr.response)
+    reject(xhr.response)
 }
 
-xhr.send ()
+xhr.send () 
+    })
 }
 
+sendRequest('GET', requestURL)
+.then(data => console.log(data))
+.catch(error => console.log(error))
+
+ // --------------------------------------------------------------------------------------
+
+ const xhr = new XMLHttpRequest();
+
+ xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts', true);
+
+ xhr.onload = function() {
+    if(xhr.status === 200) {
+        console.log("Данные:", xhr.responseText);
+    } else {
+            console.error("Ошибка загрузки")
+        }
+};
+
+xhr.onerror = function() {
+    console.error("Ошибка соединения");
+};
+
+xhr.send();
+
+// new XMLHttpRequest() → создаём запрос
+// .open() → готовим запрос (метод + адрес)
+// .onload / .onerror → слушаем результат
+// .send() → отправляем
 
 
 
