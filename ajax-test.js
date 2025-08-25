@@ -185,6 +185,84 @@ xhr.send();
 // .send() → отправляем
 
 
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://jsonplaceholder.typicode.com/wrong-url");
+
+xhr.onload = function() {
+    if (xhr.status !== 200) {
+        console.log(`Ошибка: ${xhr.status} ${xhr.statusText}`);
+    }
+};
+
+xhr.onerror = function() {
+    console.log("Ошибка соединения");
+};
+
+xhr.send();
+
+
+const xhr = new XMLHttpRequest();
+xhr.open("POST", "https://jsonplaceholder.typicode.com/posts");
+xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+
+const newPost = {
+    title: "Мой первый пост",
+    body: "Привет! Это я учусь AJAX",
+    userId: 1
+};
+
+xhr.onload = function() {
+    if (xhr.status === 201) { // код 201 — Created
+        console.log("Пост успешно создан:", JSON.parse(xhr.responseText));
+    }
+};
+
+xhr.onerror = function() {
+    console.log("Ошибка при отправке поста");
+};
+
+xhr.send(JSON.stringify(newPost));
+
+
+
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1");
+
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        const post = JSON.parse(xhr.responseText);
+        console.log(`Заголовок: ${post.title}`);
+        console.log(`Текст: ${post.body}`);
+    }
+};
+
+xhr.onerror = function() {
+    console.log("Ошибка при загрузке поста");
+};
+
+xhr.send();
+
+
+
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        const users = JSON.parse(xhr.responseText);
+        users.forEach(user => {
+            console.log(`Имя: ${user.name}, Email: ${user.email}`);
+        });
+    }
+};
+
+xhr.onerror = function() {
+    console.log("Ошибка загрузки пользователей");
+};
+
+xhr.send();
+
+
 
 
 
