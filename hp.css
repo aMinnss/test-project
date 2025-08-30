@@ -33,9 +33,9 @@ nav a {
     text-decoration: none;
 }
 
-/* nav a:visited {
+nav a:visited {
     color: green;
-} */
+}
 
 nav a:hover {
     color: red;

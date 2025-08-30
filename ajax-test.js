@@ -262,7 +262,42 @@ xhr.onerror = function() {
 
 xhr.send();
 
+// const xhr = new XMLHttpRequest();
+// xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1");
 
+// xhr.onload = function() {
+//     if (xhr.status === 200) {
+//         const post = JSON.parse(xhr.responseText);
+//         console.log(`Заголовок: ${post.title}`);
+//         console.log(`Текст: ${post.body}`);
+//     }
+// };
+
+// xhr.onerror = function() {
+//     console.log("Ошибка при загрузке поста");
+// };
+
+// xhr.send();
+
+
+
+// const xhr = new XMLHttpRequest();
+// xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+
+// xhr.onload = function() {
+//     if (xhr.status === 200) {
+//         const users = JSON.parse(xhr.responseText);
+//         users.forEach(user => {
+//             console.log(`Имя: ${user.name}, Email: ${user.email}`);
+//         });
+//     }
+// };
+
+// xhr.onerror = function() {
+//     console.log("Ошибка загрузки пользователей");
+// };
+
+// xhr.send();
 
 
 
