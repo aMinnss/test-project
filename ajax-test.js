@@ -347,6 +347,81 @@ xhr.open("GET", "https://jsonplaceholder.typicode.com/posts","true")
 xhr.onload = function(){
     data.forEach(post => {
 
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===================================================================
+
+const textIdContainer5 = document.getElementById("post-container");
+
+const xhr = new XMLHttpRequest();
+
+xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true)
+
+xhr.onload = function() {
+    const data = JSON.parse(xhr.responseText);
+    data.forEach(post => {
+
+        const li = document.createElement("li");
+
+        const title = document.createElement("h3");
+        title.textContent = post.title;
+
+        const body = document.createElement("p");
+        body.textContent = post.body;
+
+        const userId = document.createElement("small");
+        userId.textContent = post.userId;
+
+        li.appendChild(title);
+        li.appendChild(body);        
+        li.appendChild(userId);
+
+        textIdContainer.appendChild(li)
+    })
+}
+
+xhr.onerror = function() {
+    console.error('error_error')
+}
+
+xhr.send()
+
+
+const textIdContainer3= document.getElementById("post-container");
+
+const xhr = new XMLHttpRequest;
+
+xhr.open("GET", "https://jsonplaceholder.typicode.com/posts","true")
+
+xhr.onload = function(){
+    data.forEach(post => {
+
         
     })
 }
