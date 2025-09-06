@@ -1,8 +1,7 @@
 const tableBody = document.querySelector("#usersTable tbody");
-const statusDiv = document.getElementById("status");
+const statussDiv = document.getElementById("status");
 const refreshBtn = document.getElementById("refreshBtn");
 
-// функция загрузки данных
 function loadUsers() {
   statusDiv.textContent = "Загрузка...";
   statusDiv.className = "loading";
@@ -28,7 +27,6 @@ function loadUsers() {
   xhr.send();
 }
 
-// функция отрисовки таблицы
 function renderTable(users) {
   users.forEach(user => {
     const row = document.createElement("tr");
@@ -49,14 +47,59 @@ function renderTable(users) {
   });
 }
 
-// функция ошибки
 function showError(message) {
   statusDiv.textContent = message;
   statusDiv.className = "error";
 }
 
-// при загрузке страницы сразу вызываем
 loadUsers();
 
-// по клику на кнопку обновляем
 refreshBtn.addEventListener("click", loadUsers);
+
+
+
+
+
+const postList = document.getElementById("postList");
+const statusDiv = document.getElementById("status");
+const loadBtn = document.getElementById("loadBtn");
+
+function loadPosts() {
+  statusDiv.textContent = "Загрузка...";
+  statusDiv.className = "loading";
+  postList.innerHTML = "";
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      const data = JSON.parse(xhr.responseText);
+      statusDiv.textContent = "";
+      renderPosts(data);
+    } else {
+      showError("Ошибка загрузки данных");
+    }
+  };
+
+  xhr.onerror = function() {
+    showError("Ошибка соединения");
+  };
+
+  xhr.send();
+}
+
+function renderPosts(posts) {
+  posts.forEach(post => {
+    const li = document.createElement("li");
+    li.textContent = post.title;
+    postList.appendChild(li);
+  });
+}
+
+function showError(message) {
+  statusDiv.textContent = message;
+  statusDiv.className = "error";
+}
+
+loadBtn.addEventListener("click", loadPosts);
